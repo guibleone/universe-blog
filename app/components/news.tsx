@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 function News() {
   return (
-    <div className='flex flex-col items-center py-20'>
+    <div className='flex flex-col items-center '>
       <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl '>Notícias recentes</h2>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-20'>
         {noticias.slice(0, 3).map((noticia) => (
