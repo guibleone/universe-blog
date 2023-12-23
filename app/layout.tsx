@@ -7,7 +7,7 @@ import Footer from './components/footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Universo Em Blog',
+  title: 'Universo Explicado',
   description: 'Explore notícias sobre nosso cosmos a partir de olhares nunca antes vistos.',
 }
 
