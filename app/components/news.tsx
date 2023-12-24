@@ -15,7 +15,7 @@ function News() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             key={noticia.id} className='flex flex-col gap-2 p-4  '>
-            <Image className='' src={noticia.image.toString()} width={330} height={100} alt={noticia.title} />
+            <Image className='aspect-video' src={noticia.image.toString()} width={330} height={100} alt={noticia.title} />
             <div className='px-2'>
               <h3 className='text-xl font-semibold '>{noticia.title}</h3>
               <p className=''>{noticia.text}</p>
@@ -26,7 +26,7 @@ function News() {
 
       </div>
 
-      <Link href={'/noticias'} className='sm:self-end -mt-10 '>
+      <Link href={'/noticias'} className='sm:self-end -mt-10 pb-20'>
         <p className='text-xl font-semibold text-gray-900 underline hover:cursor-pointer md:px-5'>Ver mais</p>
       </Link>
     </div>

@@ -27,9 +27,7 @@ export default function Home() {
 
           </div>
         </div>
-
         {/**TODO : noticias recentes */}
-
 
       </MaxWidthWrapper>
 
