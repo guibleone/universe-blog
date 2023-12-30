@@ -2,7 +2,6 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
-import { noticias } from '@/lib/data'
 import News from './components/news'
 
 export default function Home() {
@@ -32,7 +31,9 @@ export default function Home() {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper >
-        <News />
+    
+          <News />
+     
       </MaxWidthWrapper>
 
     </>

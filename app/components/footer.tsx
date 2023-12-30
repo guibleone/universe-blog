@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
     return (
-        <footer className='w-full bg-purple-800'>
+        <footer className='w-full bg-purple-800 '>
             <div className='flex flex-col gap-3 items-center py-7'>
                 <h3 className='text-purple-50'>
                     Todos os direitos reservados &copy; 2023

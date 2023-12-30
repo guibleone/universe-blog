@@ -28,8 +28,6 @@ const Drawer: React.FC<DrawerProps> = ({ width = 270, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => setIsOpen((isOpen) => !isOpen), []);
 
-
-
   // On hammer load
 
   return (
@@ -84,7 +82,9 @@ const Drawer: React.FC<DrawerProps> = ({ width = 270, children }) => {
             </button>
           </div>
           {/* Drawer content */}
+          <div onClick={toggleOpen}>
           {children}
+          </div>
         </div>
       </motion.div>
     </React.Fragment>

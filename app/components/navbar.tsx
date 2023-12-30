@@ -22,21 +22,37 @@ function Navbar() {
     const { data } = useSession()
     const user = data?.user
 
-    const [matches, setMatches] = React.useState(false)
+    const [matches, setMatches] = React.useState(() => {
+        // Check if window is defined before using it
+        if (typeof window !== 'undefined') {
+            return window.matchMedia('(max-width: 768px)').matches;
+        }
+        // Default value if window is not defined
+        return false;
+    });
 
     useEffect(() => {
         const handler = () => {
-            setMatches(window.matchMedia('(max-width: 768px)').matches)
+            setMatches(window.matchMedia('(max-width: 768px)').matches);
+        };
+
+        // Add event listener only if window is defined
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handler);
+
+            // Cleanup the event listener on component unmount
+            return () => {
+                window.removeEventListener('resize', handler);
+            };
         }
-        window.addEventListener('resize', handler)
-        return () => window.removeEventListener('resize', handler)
-    }
-        , [])
+    }, []);
 
     return (
         <MaxWidthWrapper>
             <nav className='py-3 flex justify-between items-center'>
-                <Image src="/assets/logo.png" width={55} height={55} alt='logo' />
+                <Link href={'/'}>
+                    <Image src="/assets/logo.png" width={55} height={55} alt='logo' />
+                </Link>
                 <ul className='gap-4 hidden md:flex'>
                     <li className='text-gray-900 text-lg font-semibold hover:text-purple-600 hover:underline'>
                         <Link href={'/'}>
@@ -44,7 +60,7 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='text-gray-900 text-lg font-semibold hover:text-purple-600 hover:underline'>
-                        <Link href={'/'}>
+                        <Link href={'/noticias'}>
                             Notícias
                         </Link>
                     </li>
@@ -65,7 +81,7 @@ function Navbar() {
                                     </Link>
                                 </li>
                                 <li className='text-gray-900 text-lg font-semibold hover:text-purple-600 hover:underline'>
-                                    <Link href={'/'}>
+                                    <Link href={'/noticias'}>
                                         Notícias
                                     </Link>
                                 </li>
@@ -88,6 +104,11 @@ function Navbar() {
                                         <li className='text-gray-900 text-lg font-semibold hover:text-purple-600 hover:underline'>
                                             <Link href={'/publicar'}>
                                                 Publicar
+                                            </Link>
+                                        </li>
+                                        <li className='text-gray-900 text-lg font-semibold hover:text-purple-600 hover:underline'>
+                                            <Link href={'/dashboard'}>
+                                                Dashboard
                                             </Link>
                                         </li>
                                         <li>
@@ -126,6 +147,18 @@ function Navbar() {
                                         <Link href={'/publicar'}>
                                             Publicar
                                         </Link>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                    <Link href={'/dashboard'}>
+                                            Dashboard
+                                        </Link>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Button className='w-full h-7' variant={'destructive'} asChild>
+                                            <Link href={'/api/auth/signout'}>
+                                                Sair
+                                            </Link>
+                                        </Button>
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
